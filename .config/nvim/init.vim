@@ -10,7 +10,6 @@ augroup numbertoggle
 augroup END
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"let g:ale_python_pylint_options = '--rcfile ~/.pylintrc'
 let g:ale_echo_msg_format='[%linter%] [%severity%] %code% %s'
 
 call plug#begin()

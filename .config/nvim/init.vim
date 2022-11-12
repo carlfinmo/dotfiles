@@ -41,6 +41,10 @@ let test#strategy = "asyncrun"
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+" Dont destroy default register
+xnoremap <silent> <leader>p "_dP
+nnoremap <silent> <leader>d "_dd
+vnoremap <silent> <leader>d "_d
 
 " gruvbox theme
 "let g:gruvbox_termcolors=16

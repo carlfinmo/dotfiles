@@ -10,10 +10,8 @@ augroup numbertoggle
 augroup END
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-let g:ale_echo_msg_format='[%linter%] [%severity%] %code% %s'
 
 call plug#begin()
-
 Plug 'vim-test/vim-test'
 Plug 'morhetz/gruvbox'
 Plug 'skywind3000/asyncrun.vim'
@@ -42,6 +40,8 @@ nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 let test#strategy = "asyncrun"
 
+" ALE
+let g:ale_echo_msg_format='[%linter%] [%severity%] %code% %s'
 " ALE Error jumping
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)

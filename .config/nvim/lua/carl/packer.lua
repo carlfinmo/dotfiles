@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
   use 'vim-test/vim-test'
   use 'skywind3000/asyncrun.vim' -- for vim-test
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'godlygeek/tabular'

@@ -14,6 +14,10 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'godlygeek/tabular'
   use 'airblade/vim-gitgutter'
+  use {'nvim-orgmode/orgmode', config = function()
+    require('orgmode').setup{}
+  end
+  }
   use {
       'ThePrimeagen/harpoon',
       requires = {

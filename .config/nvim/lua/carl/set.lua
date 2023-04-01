@@ -1,5 +1,6 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = 'yes:1'
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -14,6 +15,7 @@ vim.opt.undofile = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
+
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     pattern = { "*" },

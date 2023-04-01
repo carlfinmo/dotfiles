@@ -19,6 +19,13 @@ return require('packer').startup(function(use)
   end
   }
   use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+  }
+  use {
       'ThePrimeagen/harpoon',
       requires = {
         'nvim-lua/plenary.nvim' -- compilations of lua functions

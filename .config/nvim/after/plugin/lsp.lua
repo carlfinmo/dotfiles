@@ -3,7 +3,6 @@ local lsp = require("lsp-zero")
 local lspconfig = require('lspconfig')
 
 lsp.preset("recommended")
-lspconfig.dartls.setup {}
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -48,5 +47,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-
 lsp.setup()
+
+local dart_lsp = lsp.build_options('dartls', {})
+require('flutter-tools').setup({lsp = dart_lsp})

@@ -9,11 +9,17 @@ return require('packer').startup(function(use)
   use 'vim-test/vim-test'
   use 'skywind3000/asyncrun.vim' -- for vim-test
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use('fatih/vim-go', {run = ':GoUpdateBinaries'})
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
+  use 'tpope/vim-surround'
   use 'godlygeek/tabular'
   use 'airblade/vim-gitgutter'
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.2',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
   use {'nvim-orgmode/orgmode', config = function()
     require('orgmode').setup{}
   end
@@ -33,7 +39,7 @@ return require('packer').startup(function(use)
   } 
   use {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
+    branch = 'v2.x',
     requires = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required

@@ -1,3 +1,4 @@
+vim.opt.filetype = on
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes:1'

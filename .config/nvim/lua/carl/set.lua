@@ -19,6 +19,8 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
+vim.keymap.set('v', '<leader>tc', 'y<cr>:call system("tmux load-buffer -w -", @0)<cr>gv')
+
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     pattern = { "*" },

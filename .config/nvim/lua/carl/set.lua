@@ -19,6 +19,8 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
+vim.opt.pumheight = 10
+
 vim.keymap.set('v', '<leader>tc', 'y<cr>:call system("tmux load-buffer -w -", @0)<cr>gv')
 
 

@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('fatih/vim-go', {run = ':GoUpdateBinaries'})
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'

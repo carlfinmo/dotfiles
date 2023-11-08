@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'morhetz/gruvbox'
+  use "rebelot/kanagawa.nvim"
   use 'simnalamburt/vim-mundo'
   use 'vim-test/vim-test'
   use 'skywind3000/asyncrun.vim' -- for vim-test
@@ -16,7 +17,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'godlygeek/tabular'
-  use 'airblade/vim-gitgutter'
+  use 'lewis6991/gitsigns.nvim'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.2',
     requires = { {'nvim-lua/plenary.nvim'} }
@@ -58,6 +59,7 @@ return require('packer').startup(function(use)
       -- Snippets
       {'L3MON4D3/LuaSnip'},             -- Required
       {'rafamadriz/friendly-snippets'}, -- Optional
+      {'natebosch/dartlang-snippets'},
     }
   }
 

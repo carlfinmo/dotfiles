@@ -36,10 +36,15 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
   }),
   sources = {
     {name = 'nvim_lsp'},
     {name = 'luasnip'},
+  },
+  preselect = 'item',
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
   },
 })
 

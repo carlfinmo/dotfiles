@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'godlygeek/tabular'
   use 'lewis6991/gitsigns.nvim'
+  use 'folke/trouble.nvim'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.2',
     requires = { {'nvim-lua/plenary.nvim'} }

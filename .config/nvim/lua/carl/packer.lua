@@ -7,8 +7,16 @@ return require('packer').startup(function(use)
   use 'morhetz/gruvbox'
   use "rebelot/kanagawa.nvim"
   use 'simnalamburt/vim-mundo'
-  use 'vim-test/vim-test'
-  use 'skywind3000/asyncrun.vim' -- for vim-test
+  use {
+      'nvim-neotest/neotest',
+      requires = {
+          "nvim-lua/plenary.nvim",
+          "antoinemadec/FixCursorHold.nvim",
+          "nvim-neotest/neotest-go",
+          "nvim-neotest/neotest-python",
+          "rouge8/neotest-rust",
+      }
+  }
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('fatih/vim-go', {run = ':GoUpdateBinaries'})
   use 'nvim-treesitter/nvim-treesitter-textobjects'

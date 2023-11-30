@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
           "nvim-neotest/neotest-go",
           "nvim-neotest/neotest-python",
           "rouge8/neotest-rust",
+          "sidlatau/neotest-dart",
       }
   }
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})

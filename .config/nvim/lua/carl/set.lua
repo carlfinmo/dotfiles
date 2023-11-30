@@ -25,6 +25,9 @@ vim.opt.pumheight = 10
 
 vim.keymap.set('v', '<leader>tc', 'y<cr>:call system("tmux load-buffer -w -", @0)<cr>gv')
 
+vim.api.nvim_set_hl(0, 'White', { fg = "White", bold = true })
+vim.api.nvim_set_hl(0, 'Red', { fg = "Red", bold = true })
+vim.api.nvim_set_hl(0, 'White2', { fg = "#ffffff", undercurl = true })
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     pattern = { "*" },

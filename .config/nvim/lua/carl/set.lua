@@ -30,6 +30,8 @@ vim.api.nvim_set_hl(0, 'White', { fg = "White", bold = true })
 vim.api.nvim_set_hl(0, 'Red', { fg = "Red", bold = true })
 vim.api.nvim_set_hl(0, 'White2', { fg = "#ffffff", undercurl = true })
 
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     pattern = { "*" },
     callback = function()

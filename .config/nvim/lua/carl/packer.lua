@@ -18,8 +18,9 @@ return require('packer').startup(function(use)
           "sidlatau/neotest-dart",
       }
   }
+  use 'gerazov/toggle-bool.nvim'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('fatih/vim-go', {run = ':GoUpdateBinaries'})
+  -- use('fatih/vim-go', {run = ':GoUpdateBinaries'})
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use 'tpope/vim-commentary'

@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'folke/trouble.nvim'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.2',
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use {'nvim-orgmode/orgmode', config = function()
@@ -67,10 +67,7 @@ return require('packer').startup(function(use)
     {'saadparwaiz1/cmp_luasnip'}, -- Optional
       -- {'natebosch/dartlang-snippets'},
   
-      -- Autocompletion 2.x
-      -- {'hrsh7th/cmp-buffer'},       -- Optional
-      -- {'hrsh7th/cmp-path'},         -- Optional
-      -- {'hrsh7th/cmp-nvim-lua'},     -- Optional
+    use 'mhartington/formatter.nvim',
   
   }
 end)

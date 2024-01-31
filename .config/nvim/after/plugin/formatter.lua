@@ -44,6 +44,14 @@ require("formatter").setup({
 			require("formatter.filetypes.go").goimports,
 		},
 
+		dart = {
+			require("formatter.filetypes.dart").dartformat,
+		},
+
+		terraform = {
+			require("formatter.filetypes.terraform").terraformfmt,
+		},
+
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
 		["*"] = {
@@ -53,3 +61,19 @@ require("formatter").setup({
 		},
 	},
 })
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+augroup("__formatter__", { clear = true })
+autocmd("BufWritePost", {
+	group = "__formatter__",
+	command = ":lua CheckModelineForFormat()",
+})
+
+-- Function to check the modeline for the 'noformat' option
+function CheckModelineForFormat()
+	if vim.o.formatoptions == "" then
+		return
+	end
+	vim.api.nvim_command("execute 'FormatWrite'")
+end

@@ -52,6 +52,11 @@ cmp.setup({
 		["<C-b>"] = cmp_action.luasnip_jump_backward(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
+	enabled = function()
+		-- disable completion in comments
+		local context = require("cmp.config.context")
+		return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+	end,
 	sources = {
 		{ name = "copilot", group_index = 2 },
 		{ name = "nvim_lsp" },

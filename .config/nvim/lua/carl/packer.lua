@@ -13,6 +13,7 @@ return require("packer").startup(function(use)
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-neotest/neotest-go",
 			"nvim-neotest/neotest-python",
+			"nvim-neotest/nvim-nio",
 			"rouge8/neotest-rust",
 			"sidlatau/neotest-dart",
 		},
@@ -30,7 +31,7 @@ return require("packer").startup(function(use)
 	use("folke/trouble.nvim")
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
+		tag = "0.1.7",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use({

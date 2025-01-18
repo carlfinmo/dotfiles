@@ -1,6 +1,4 @@
 local cmp = require("cmp")
--- local cmp_format = lsp_zero.cmp_format()
-local cmp_action = require("lsp-zero").cmp_action()
 
 local lspkind = require("lspkind")
 local cmp_format = {
@@ -48,8 +46,6 @@ cmp.setup({
 		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 		["<C-y>"] = cmp.mapping.confirm({ select = true }),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-f>"] = cmp_action.luasnip_jump_forward(),
-		["<C-b>"] = cmp_action.luasnip_jump_backward(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
 	enabled = function()

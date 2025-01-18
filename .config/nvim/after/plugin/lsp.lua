@@ -1,22 +1,33 @@
-local lsp_zero = require("lsp-zero")
+-- local lsp_zero = require("lsp-zero")
 
-lsp_zero.on_attach(function(client, bufnr)
-	-- see :help lsp-zero-keybindings
-	-- to learn the available actions
-	lsp_zero.default_keymaps({ buffer = bufnr })
-end)
+-- lsp_zero.on_attach(function(client, bufnr)
+-- 	-- see :help lsp-zero-keybindings
+-- 	-- to learn the available actions
+-- 	lsp_zero.default_keymaps({ buffer = bufnr })
+-- end)
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {},
 	handlers = {
-		lsp_zero.default_setup,
-		lua_ls = function()
-			local lua_opts = lsp_zero.nvim_lua_ls()
-			require("lspconfig").lua_ls.setup(lua_opts)
+		function(server_name)
+			require("lspconfig")[server_name].setup({})
 		end,
+		-- lsp_zero.default_setup,
+		-- lua_ls = function()
+		-- 	local lua_opts = lsp_zero.nvim_lua_ls()
+		-- 	require("lspconfig").lua_ls.setup(lua_opts)
+		-- end,
 	},
 })
+
+vim.opt.signcolumn = "yes"
+
+-- Add cmp_nvim_lsp capabilities settings to lspconfig
+-- This should be executed before you configure any language server
+local lspconfig_defaults = require("lspconfig").util.default_config
+lspconfig_defaults.capabilities =
+	vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),

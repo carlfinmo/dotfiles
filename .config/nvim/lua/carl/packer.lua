@@ -31,7 +31,7 @@ return require("packer").startup(function(use)
 	use("folke/trouble.nvim")
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.7",
+		tag = "0.1.8",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use({
@@ -74,8 +74,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
-		{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-
 		-- LSP Support
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason.nvim" },

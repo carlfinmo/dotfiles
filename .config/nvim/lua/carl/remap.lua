@@ -33,3 +33,17 @@ vim.keymap.set("n", "<leader>ff", ":Format<CR>", { silent = true })
 -- send to other tmux pane
 vim.keymap.set("v", "<leader>tc", 'y<cr>:call system("tmux load-buffer -w -", @0)<cr>gv')
 vim.keymap.set("v", "<leader>st", 'y<cr>:call system("tmux load-buffer -w -; tmux paste-buffer -t +", @0)<cr>')
+
+local function toggle_quickfix()
+	local windows = vim.fn.getwininfo()
+	for _, win in pairs(windows) do
+		if win["quickfix"] == 1 then
+			vim.cmd.cclose()
+			return
+		end
+	end
+	vim.cmd.copen()
+end
+
+vim.keymap.set("n", "<F3>", toggle_quickfix, { desc = "Toggle Quickfix Window" })
+vim.keymap.set("n", "<leader>qf", toggle_quickfix, { desc = "Toggle Quickfix Window" })

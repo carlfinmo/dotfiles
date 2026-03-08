@@ -54,8 +54,46 @@ return {
 					require("formatter.filetypes.dart").dartformat,
 				},
 
+				sql = {
+					function()
+						return {
+							exe = "pg_format --inplace -",
+							stdin = true,
+						}
+					end,
+
+					-- require("formatter.filetypes.sql").pgformat,
+				},
+
+				rust = {
+					function()
+						return {
+							exe = "rustfmt",
+							args = { "--emit=stdout" },
+							stdin = true,
+						}
+					end,
+				},
+
+				proto = {
+					require("formatter.filetypes.proto").buf_format,
+				},
+
 				terraform = {
 					require("formatter.filetypes.terraform").terraformfmt,
+				},
+
+				javascript = {
+					require("formatter.filetypes.javascript").prettier,
+				},
+				javascriptreact = {
+					require("formatter.filetypes.javascriptreact").prettier,
+				},
+				typescript = {
+					require("formatter.filetypes.typescript").prettier,
+				},
+				typescriptreact = {
+					require("formatter.filetypes.typescriptreact").prettier,
 				},
 
 				-- Use the special "*" filetype for defining formatter configurations on

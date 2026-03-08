@@ -1,19 +1,14 @@
 return {
-	"williamboman/mason.nvim",
-	dependencies = { "williamboman/mason-lspconfig.nvim" },
+	"mason-org/mason.nvim",
+	dependencies = { "mason-org/mason-lspconfig.nvim" },
 	config = function()
 		require("mason").setup({})
 		require("mason-lspconfig").setup({
-			ensure_installed = {},
+			ensure_installed = { "rust_analyzer" },
 			handlers = {
 				function(server_name)
-					require("lspconfig")[server_name].setup({})
+					vim.lsp.config(server_name, {}) -- new API
 				end,
-				-- lsp_zero.default_setup,
-				-- lua_ls = function()
-				-- 	local lua_opts = lsp_zero.nvim_lua_ls()
-				-- 	require("lspconfig").lua_ls.setup(lua_opts)
-				-- end,
 			},
 		})
 	end,

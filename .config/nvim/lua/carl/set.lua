@@ -1,4 +1,4 @@
-vim.opt.filetype = on
+vim.opt.filetype = "on"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes:1"
@@ -23,12 +23,16 @@ vim.opt.termguicolors = true
 
 vim.opt.pumheight = 10
 
+vim.g.python3_host_prog = os.getenv("HOME") .. "/.config/nvim/python/bin/python"
+
+-- vim.diagnostic.config({virtual_lines = true})
+
 -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	pattern = { "*" },
 	callback = function()
-		vim.api.nvim_exec('silent! normal! g`"zv', false)
+		vim.cmd('silent! normal! g`"zv')
 	end,
 })
 
@@ -51,3 +55,12 @@ vim.api.nvim_set_hl(0, "White", { fg = "White", bold = true })
 vim.api.nvim_set_hl(0, "Red", { fg = "Red", bold = true })
 vim.api.nvim_set_hl(0, "White2", { fg = "#ffffff", undercurl = true })
 vim.api.nvim_set_hl(0, "Grey", { fg = "#989898" })
+
+-- vim.cmd("abbreviate todo TODO:")
+vim.cmd("abbreviate fixme FIXME:")
+
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
+})

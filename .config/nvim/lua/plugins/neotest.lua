@@ -4,32 +4,54 @@ return {
 	keys = { "t<C-n>" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"antoinemadec/FixCursorHold.nvim",
-		"nvim-neotest/neotest-go",
+		{ "nvim-treesitter/nvim-treesitter" },
+		{
+			"nvim-treesitter/nvim-treesitter", -- Optional, but recommended
+			branch = "main", -- NOTE; not the master branch!
+			build = function()
+				vim.cmd(":TSUpdate go")
+			end,
+		},
+		{
+			"fredrikaverpil/neotest-golang",
+			version = "*", -- Optional, but recommended; track releases
+			build = function()
+				vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
+			end,
+		},
 		"nvim-neotest/neotest-python",
 		"nvim-neotest/nvim-nio",
-		"rouge8/neotest-rust",
-		"sidlatau/neotest-dart",
 	},
 	config = function()
 		local neotest = require("neotest")
+
+		local neotest_ns = vim.api.nvim_create_namespace("neotest")
+		vim.diagnostic.config({
+			virtual_text = {
+				format = function(diagnostic)
+					local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+					return message
+				end,
+			},
+		}, neotest_ns)
+
+		local neotest_golang_opts = { -- Specify configuration
+			runner = "go",
+			go_test_args = {
+				"-v",
+				"-race",
+				"-count=1",
+				"-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
+			},
+		}
 
 		neotest.setup({
 			diagnostic = {
 				enabled = true,
 			},
 			adapters = {
-				require("neotest-go"),
-				require("neotest-rust"),
+				require("neotest-golang")(neotest_golang_opts),
 				require("neotest-python"),
-				require("neotest-dart")({
-					command = "flutter", -- Command being used to run tests. Defaults to `flutter`
-					-- Change it to `fvm flutter` if using FVM
-					-- change it to `dart` for Dart only tests
-					use_lsp = true, -- When set Flutter outline information is used when constructing test name.
-					-- Useful when using custom test names with @isTest annotation
-					custom_test_method_names = {},
-				}),
 			},
 		})
 
